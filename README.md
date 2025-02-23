@@ -7,6 +7,7 @@
 
 1. **`environ/`** - 推論・LoRA チューニングを行うための開発環境のセットアップスクリプト
 2. **`llama-3.1-swallow-tools/`** - Llama-3.1-Swallow-8B-Instruct の推論および LoRA チューニングのためのスクリプト
+3. **`gemma-2-tools/`** - gemma-2-9b-it の推論および LoRA チューニングのためのスクリプト
 
 各ディレクトリの詳細については、それぞれの `README.md` を参照してください。
 
@@ -22,6 +23,15 @@ slm_tools/
 │   ├── README.md                # 環境構築に関する詳細説明
 │
 ├── llama-3.1-swallow-tools/     # Llama-3.1-Swallow-8B-Instruct 用スクリプト
+│   ├── inference.py             # 推論用スクリプト
+│   ├── lora.py                  # LoRA チューニング用スクリプト
+│   ├── merge_adapter.py         # LoRA アダプター統合スクリプト
+│   ├── save_model.py            # Hugging Face からモデルをダウンロード
+│   ├── run_single_lora.sh       # LoRA チューニング実行スクリプト
+│   ├── run_merge_adapter.sh     # LoRA 統合実行スクリプト
+│   ├── README.md                # 推論・LoRA チューニングに関する詳細説明
+│
+├── gemma-2-tools/     # gemma-2-9b-it 用スクリプト
 │   ├── inference.py             # 推論用スクリプト
 │   ├── lora.py                  # LoRA チューニング用スクリプト
 │   ├── merge_adapter.py         # LoRA アダプター統合スクリプト
@@ -58,7 +68,16 @@ Llama の推論および LoRA チューニングに関するスクリプトは `
 
 ```bash
 cd llama-3.1-swallow-tools
-python inference.py --model_path /data/models/Llama-3.1-Swallow-8B-Instruct-v0.3 --prompt "京アニの代表作は？"
+python inference.py --model_path "/data/models/Llama-3.1-Swallow-8B-Instruct-v0.3" --prompt "京アニの代表作は？"
+```
+
+### **4. gemma-2-9b-it の推論 & LoRA チューニング**
+Llama の推論および LoRA チューニングに関するスクリプトは `gemma-2-tools/` に格納されています。
+詳細は `gemma-2-tools/README.md` を参照してください。
+
+```bash
+cd gemma-2-tools
+python inference.py --model_path "/data/models/gemma-2-9b-it" --prompt "LLMについて教えて。"
 ```
 
 ---
@@ -72,6 +91,9 @@ python inference.py --model_path /data/models/Llama-3.1-Swallow-8B-Instruct-v0.3
   - 本モデルは TokyoTech-LLM チームが提供しており、Meta の Llama 3 に基づいています。
   - 使用する際は、[Meta Llama 3 License](https://ai.meta.com/llama/) を確認してください。
   - **商用利用が制限される可能性があります。**
+- **Gemma-2-9B-IT のライセンス**
+  本モデルは **Google によって提供** されており、使用する際は [Gemma の公式ライセンス](https://ai.google.dev/gemma) を確認してください。
+  **商用利用の可否などに注意が必要です。**
 - **依存ライブラリのライセンス**
   - 本リポジトリで使用する `transformers`, `peft`, `torch` などのライブラリは Apache License 2.0, BSD などのライセンスで提供されています。
   - 詳細は各ライブラリの公式ドキュメントを参照してください。
