@@ -1,0 +1,30 @@
+services:
+  app:
+    image: dev-env-image:latest # 使用するDockerイメージ
+    build: . # Dockerfileからビルド
+    container_name: dev-env # コンテナ名の指定
+
+    working_dir: /working # 作業ディレクトリ
+    command: /bin/bash # 起動時のデフォルトコマンド
+
+    volumes:
+      - ../data:/data # ホストの `data` をコンテナ内 `/data` にマウント
+
+    ports:
+      - "55000:55000"
+      - "55001:55001"
+      - "55002:55002"
+
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all # NVIDIA GPU を使用可能に
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu] # GPUを使用する設定
+
+    tty: true # インタラクティブなシェルを有効化
+    stdin_open: true # 標準入力を開いたままにする
