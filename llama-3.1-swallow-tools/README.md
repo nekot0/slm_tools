@@ -15,8 +15,8 @@
 
 ### **1. リポジトリをクローン**
 ```bash
-git clone https://github.com/nekot0/llama-3.1-swallow-tools.git
-cd llama-3.1-swallow-tools
+git clone https://github.com/nekot0/slm_tools.git
+cd slm_tools/llama-3.1-swallow-tools
 ```
 
 ### **2. 必要なモデルをダウンロード**

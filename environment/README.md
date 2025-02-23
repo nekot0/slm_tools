@@ -14,8 +14,8 @@
 
 ### **1. リポジトリをクローン**
 ```bash
-git clone https://github.com/nekot0/environment.git
-cd environment
+git clone https://github.com/nekot0/slm_tools.git
+cd slm_tools/environment
 ```
 
 ### **2. Docker イメージのビルドとコンテナの起動**
